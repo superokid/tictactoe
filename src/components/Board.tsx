@@ -6,8 +6,10 @@ import { calculateWinner } from "../utils/game";
 
 interface Props {}
 
+const initialSquares = Array(9).fill(null);
+
 const Board = (props: Props) => {
-  const [squares, setSquares] = useState<Squares>(Array(9).fill(null));
+  const [squares, setSquares] = useState<Squares>(initialSquares);
   const [isSecondPlayer, setSecondPlayer] = useState<boolean>(false);
 
   const winner = calculateWinner(squares);
@@ -24,6 +26,10 @@ const Board = (props: Props) => {
 
   const renderSquare = (i: SquareIndex) => {
     return <Square value={squares[i]} onClick={() => handleClick(i)}></Square>;
+  };
+
+  const handleReset = () => {
+    setSquares(initialSquares);
   };
 
   return (
@@ -46,6 +52,9 @@ const Board = (props: Props) => {
           {renderSquare(8)}
         </Row>
       </Container>
+      <Reset data-testid="reset" onClick={handleReset}>
+        Reset
+      </Reset>
     </>
   );
 };
@@ -61,4 +70,9 @@ const Container = styled.div``;
 
 const Row = styled.div`
   display: flex;
+`;
+
+const Reset = styled.button`
+  font-size: 20px;
+  margin-top: 20px;
 `;

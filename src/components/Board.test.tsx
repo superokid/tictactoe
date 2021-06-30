@@ -6,6 +6,7 @@ describe("<Board/>", () => {
   test("empty board", () => {
     const { queryByText } = render(<Component />);
     expect(queryByText(/O/i)).toBeNull();
+    expect(queryByText(/X/i)).toBeNull();
   });
 
   test("render player after click", () => {
@@ -40,5 +41,22 @@ describe("<Board/>", () => {
 
     const winner = queryByText(/winner: O/i);
     expect(winner).toBeInTheDocument();
+  });
+
+  test("reset game", () => {
+    const { getAllByRole, queryByText, getByTestId } = render(<Component />);
+    expect(queryByText(/winner/i)).toBeNull();
+    const dom = getAllByRole("button");
+    fireEvent.click(dom[0]);
+    fireEvent.click(dom[3]);
+    fireEvent.click(dom[1]);
+    fireEvent.click(dom[4]);
+    fireEvent.click(dom[2]);
+    fireEvent.click(dom[5]);
+
+    const resetButton = getByTestId("reset");
+    fireEvent.click(resetButton);
+    expect(queryByText(/O/i)).toBeNull();
+    expect(queryByText(/X/i)).toBeNull();
   });
 });
