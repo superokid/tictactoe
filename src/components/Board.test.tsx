@@ -1,5 +1,5 @@
 import React from "react";
-import { render, fireEvent, screen } from "@testing-library/react";
+import { render, fireEvent } from "@testing-library/react";
 import Component from "./Board";
 
 describe("<Board/>", () => {
@@ -14,7 +14,7 @@ describe("<Board/>", () => {
     const dom = getAllByRole("button");
     fireEvent.click(dom[0]);
 
-    const value = queryByText(/O/i);
+    const value = queryByText("O");
     expect(value).toBeInTheDocument();
   });
 
@@ -24,7 +24,7 @@ describe("<Board/>", () => {
     fireEvent.click(dom[0]);
     fireEvent.click(dom[0]);
 
-    const value = queryByText(/O/i);
+    const value = queryByText("O");
     expect(value).toBeInTheDocument();
   });
 
