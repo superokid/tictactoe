@@ -34,7 +34,12 @@ const Board = (props: Props) => {
 
   return (
     <>
-      <Status>{winner && `winner: ${winner}`}</Status>
+      {winner ? (
+        <WinnerStatus>{`winner: ${winner}`}</WinnerStatus>
+      ) : (
+        <Status>Next Player: {isSecondPlayer ? "X" : "O"}</Status>
+      )}
+
       <Container>
         <Row>
           {renderSquare(0)}
@@ -62,8 +67,13 @@ const Board = (props: Props) => {
 export default Board;
 
 const Status = styled.div`
-  margin-bottom: 1.5em;
   font-size: 20px;
+  margin-bottom: 1em;
+`;
+
+const WinnerStatus = styled.div`
+  font-size: 20px;
+  margin-bottom: 1.5em;
 `;
 
 const Container = styled.div``;

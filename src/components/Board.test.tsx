@@ -5,8 +5,8 @@ import Component from "./Board";
 describe("<Board/>", () => {
   test("empty board", () => {
     const { queryByText } = render(<Component />);
-    expect(queryByText(/O/i)).toBeNull();
-    expect(queryByText(/X/i)).toBeNull();
+    expect(queryByText("O")).toBeNull();
+    expect(queryByText("X")).toBeNull();
   });
 
   test("render player after click", () => {
@@ -56,7 +56,7 @@ describe("<Board/>", () => {
 
     const resetButton = getByTestId("reset");
     fireEvent.click(resetButton);
-    expect(queryByText(/O/i)).toBeNull();
-    expect(queryByText(/X/i)).toBeNull();
+    expect(queryByText("O")).toBeNull();
+    expect(queryByText("X")).toBeNull();
   });
 });
