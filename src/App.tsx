@@ -18,4 +18,5 @@ const Layout = styled.div`
   justify-content: center;
   height: 100vh;
   background: aliceblue;
+  flex-direction: column;
 `;

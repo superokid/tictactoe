@@ -15,6 +15,6 @@ describe("<Square/>", () => {
       <Component value={"O"} onClick={() => {}} />
     );
     expect(getByText(/O/i)).toBeInTheDocument();
-    expect(queryByText(/I/i)).toBeNull();
+    expect(queryByText(/X/i)).toBeNull();
   });
 });

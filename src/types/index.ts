@@ -1,3 +1,3 @@
-export type Player = "O" | "I";
-export type Squares = Player[];
+export type Player = "O" | "X";
+export type Squares = (Player | null)[];
 export type SquareIndex = number;
